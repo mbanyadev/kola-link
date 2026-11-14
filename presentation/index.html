@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kola Link — BCH BLAZE 2026</title>
+    <link rel="icon" href="../favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,650;1,9..144,650&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root { --ink:#1a1814; --paper:#f6f1e8; --forest:#1f5c45; --kola:#c45c26; --muted:#5c564c; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; background: #13281f; color: var(--ink); font-family: Outfit, sans-serif; }
+      .slide {
+        display: none;
+        min-height: 100vh;
+        padding: 8vh 10vw;
+        background:
+          radial-gradient(circle at top right, rgba(196,92,38,.16), transparent 30rem),
+          var(--paper);
+      }
+      .slide.on { display: flex; flex-direction: column; justify-content: center; }
+      h1, h2 { font-family: Fraunces, Georgia, serif; letter-spacing: -0.03em; margin: 0 0 16px; }
+      h1 { font-size: clamp(2.6rem, 7vw, 5rem); line-height: .95; }
+      h1 em, h2 em { color: var(--forest); font-style: italic; }
+      h2 { font-size: clamp(2rem, 5vw, 3.2rem); }
+      p, li { font-size: 1.25rem; color: var(--muted); line-height: 1.45; max-width: 44rem; }
+      .eyebrow { letter-spacing: .14em; text-transform: uppercase; color: var(--kola); font-weight: 650; font-size: .85rem; margin-bottom: 12px; }
+      a { color: var(--forest); }
+      .bar {
+        position: fixed; right: 20px; bottom: 16px; color: #f6f1e8; font-size: .85rem;
+        display: flex; gap: 10px; align-items: center;
+      }
+      .bar button {
+        background: var(--kola); color: white; border: 0; border-radius: 999px;
+        padding: 8px 12px; font: inherit; cursor: pointer;
+      }
+      ul { margin: 8px 0 0; padding-left: 1.2rem; display: grid; gap: 8px; }
+      code { font-family: ui-monospace, monospace; font-size: .9em; }
+    </style>
+  </head>
+  <body>
+    <article class="slide on" data-slide>
+      <div class="eyebrow">BCH BLAZE 2026 · Mbanya Dev</div>
+      <h1>Kola Link</h1>
+      <p>A self-sovereign identity that binds a Bitcoin Cash wallet to a Nostr key — so an app can recognise you, and someone can pay you, without a central account.</p>
+    </article>
+    <article class="slide" data-slide>
+      <div class="eyebrow">The problem</div>
+      <h2>Digital identity still sits behind platforms.</h2>
+      <p>Accounts, logins and “send it to my address” all depend on someone else’s database, or on pasting long strings into chat. Bitcoin Cash and Nostr already give people keys. They are not yet tied together in a way other apps can verify.</p>
+    </article>
+    <article class="slide" data-slide>
+      <div class="eyebrow">The idea</div>
+      <h2>One statement, two proofs of control.</h2>
+      <p>The holder signs a canonical <code>kola-link:v1</code> statement with a Nostr key and with a Bitcoin Cash key. The keys are independent. Putting an address in a Nostr profile is not enough.</p>
+    </article>
+    <article class="slide" data-slide>
+      <div class="eyebrow">How it works</div>
+      <h2>Discoverable, but not hosted by us.</h2>
+      <ul>
+        <li>A kind-30078 event is published to public relays.</li>
+        <li>Anyone can look it up by npub or by cashaddr.</li>
+        <li>Verification is a pure function: Nostr signature, statement commitment, recovered Bitcoin Cash key.</li>
+        <li>A relying app such as Sawa Market logs the holder in with a short-lived challenge.</li>
+      </ul>
+    </article>
+    <article class="slide" data-slide>
+      <div class="eyebrow">Demo</div>
+      <h2>From keys to a verified login in about a minute.</h2>
+      <p>The live demo is client-side and defaults to chipnet. You can generate demo keys in the browser, or bring a NIP-07 signer and a WizardConnect wallet (Paytaca, Selene, Cashonize).</p>
+      <p><a href="https://mbanyadev.github.io/kola-link/">mbanyadev.github.io/kola-link</a></p>
+    </article>
+    <article class="slide" data-slide>
+      <div class="eyebrow">Stretch</div>
+      <h2>Pay a person, not a raw address.</h2>
+      <ul>
+        <li>Resolve an npub to a verified cashaddr.</li>
+        <li>Kumba Verify issues salted attestations; the holder discloses one attribute at a time.</li>
+        <li>An optional on-chain XO identity-anchor timestamps the commitment and can be rotated or revoked.</li>
+      </ul>
+    </article>
+    <article class="slide" data-slide>
+      <div class="eyebrow">Build with XO</div>
+      <h2>A novel <em>identity-anchor</em> template.</h2>
+      <p>Actions: <code>bind</code>, <code>rotate</code>, <code>revoke</code>. The redeem script commits to <code>sha256(statement)</code> and still needs the holder’s signature. Designed and tested for chipnet. Invitation reproduction is in the repository.</p>
+    </article>
+    <article class="slide" data-slide>
+      <div class="eyebrow">Links</div>
+      <h2>Open the work.</h2>
+      <ul>
+        <li>Demo: <a href="https://mbanyadev.github.io/kola-link/">mbanyadev.github.io/kola-link</a></li>
+        <li>Source: <a href="https://github.com/mbanyadev/kola-link">github.com/mbanyadev/kola-link</a></li>
+        <li>Specification: <code>docs/SPEC.md</code> (KL-1)</li>
+        <li>Widget Factory official template: <a href="https://docs.google.com/presentation/d/1Yfuk9CJkf4U9M_WukcELhumWgj3Ak6345Ewy8hSp-Hk/edit">Google Slides</a></li>
+      </ul>
+      <p>Community Choice CashTokens address is still a marked placeholder — we do not have a real one yet.</p>
+    </article>
+    <div class="bar">
+      <span id="pos">1 / 8</span>
+      <button type="button" id="prev">Back</button>
+      <button type="button" id="next">Next</button>
+    </div>
+    <script>
+      const slides = [...document.querySelectorAll('[data-slide]')]
+      let i = 0
+      const show = () => {
+        slides.forEach((slide, index) => slide.classList.toggle('on', index === i))
+        document.getElementById('pos').textContent = `${i + 1} / ${slides.length}`
+      }
+      const go = (d) => { i = Math.max(0, Math.min(slides.length - 1, i + d)); show() }
+      document.getElementById('prev').onclick = () => go(-1)
+      document.getElementById('next').onclick = () => go(1)
+      addEventListener('keydown', (event) => {
+        if (['ArrowRight', 'PageDown', ' '].includes(event.key)) go(1)
+        if (['ArrowLeft', 'PageUp'].includes(event.key)) go(-1)
+      })
+    </script>
+  </body>
+</html>
