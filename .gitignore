@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.local
+.vite
+coverage
+
+# local XO engine state
+xo/.xo-engine/
+xo/last-receive-address.txt
