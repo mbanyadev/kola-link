@@ -616,9 +616,34 @@ export default function App() {
               Template identifier:{' '}
               <span className="mono">719cabf1d86ee1c3ea3cd7c98b09f7638823fe1074cca8b1ca95e55a5c59464c</span>
             </p>
+            <p>
+              Chipnet run executed 14 Nov 2026, funded from a free chipnet faucet.
+              Bind invitation{' '}
+              <span className="mono">b29c77431113a7898bf6dc151c8916eb</span>. Bind
+              transaction (10,000 sat P2SH anchor):{' '}
+              <a
+                href="https://chipnet.imaginary.cash/tx/e13cb5da54ef8e2449ae4b497afb96f6ea80a14f96d3fdbc4ed1eed5a7a1638c"
+                target="_blank"
+                rel="noreferrer"
+              >
+                e13cb5da54ef8e2449ae4b497afb96f6ea80a14f96d3fdbc4ed1eed5a7a1638c
+              </a>
+              . Revoke transaction:{' '}
+              <a
+                href="https://chipnet.imaginary.cash/tx/903ce89337bb5452d25206a6fa1cfb08e3d11a74b92ccd2dffb5eeec385c6aa0"
+                target="_blank"
+                rel="noreferrer"
+              >
+                903ce89337bb5452d25206a6fa1cfb08e3d11a74b92ccd2dffb5eeec385c6aa0
+              </a>
+              .
+            </p>
             <div className="row">
               <a className="btn" href={`${import.meta.env.BASE_URL}xo/identity-anchor.template.json`}>
                 Download template JSON
+              </a>
+              <a className="btn ghost" href={`${import.meta.env.BASE_URL}xo/last-invitation.json`}>
+                Download invitation JSON
               </a>
               <a className="btn ghost" href="https://blaze.xo.cash/" target="_blank" rel="noreferrer">
                 Open XO debug tool
